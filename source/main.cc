@@ -22,37 +22,10 @@
 int
 main()
 {
-  try
-    {
-      Laplacian<DEAL_DIMENSION> laplace_problem;
-      laplace_problem.run();
-    }
-  catch (std::exception &exc)
-    {
-      std::cerr << std::endl
-                << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      std::cerr << "Exception on processing: " << std::endl
-                << exc.what() << std::endl
-                << "Aborting!" << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-
-      return 1;
-    }
-  catch (...)
-    {
-      std::cerr << std::endl
-                << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      std::cerr << "Unknown exception!" << std::endl
-                << "Aborting!" << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      return 1;
-    }
-
+  deallog.depth_console(2);
+ 
+  Laplacian laplace_problem;
+  laplace_problem.run(5, 3);
+ 
   return 0;
 }

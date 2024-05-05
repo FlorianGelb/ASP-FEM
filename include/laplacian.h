@@ -35,40 +35,34 @@
 
 using namespace dealii;
 
-template <int dim>
+
 class Laplacian
 {
 public:
   Laplacian();
 
-  void
-  run();
+  void run(uint8_t refinements, float k);
+
 
 private:
-  void
-  setup_system();
-  void
-  assemble_system();
-  void
-  solve();
-  void
-  refine_grid();
-  void
-  output_results(const unsigned int cycle) const;
+  void make_grid(uint16_t refinements);
+  void setup_system();
+  void assemble_system(float k);
+  void solve();
+  void output_results() const;
 
-  Triangulation<dim> triangulation;
+  Triangulation<2> triangulation;
+  FE_Q<2>          fe;
+  DoFHandler<2>    dof_handler;
 
-  FE_Q<dim>       fe;
-  DoFHandler<dim> dof_handler;
-
-
-  AffineConstraints<double> constraints;
-
-  SparseMatrix<double> system_matrix;
   SparsityPattern      sparsity_pattern;
+  SparseMatrix<double> system_matrix;
 
   Vector<double> solution;
   Vector<double> system_rhs;
 };
 
 #endif
+
+
+
