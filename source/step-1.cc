@@ -120,9 +120,3 @@ void first_grid()
     std::cout << "Grid written to grid-1.svg" << std::endl;
 }
 
-int main()
-{
-    //first_grid();
-    second_grid();
-
-}
